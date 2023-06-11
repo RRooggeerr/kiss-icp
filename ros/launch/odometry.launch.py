@@ -49,26 +49,26 @@ def generate_launch_description():
             DeclareLaunchArgument("min_range", default_value="5.0"),
             # This thing is still not suported: https://github.com/ros2/launch/issues/290#issuecomment-1438476902
             #  DeclareLaunchArgument("voxel_size", default_value=None),
-            Node(
-                package="kiss_icp",
-                executable="odometry_node",
-                name="odometry_node",
-                output="screen",
-                remappings=[("pointcloud_topic", LaunchConfiguration("topic"))],
-                parameters=[
-                    {
-                        "odom_frame": LaunchConfiguration("odom_frame"),
-                        "child_frame": LaunchConfiguration("child_frame"),
-                        "max_range": LaunchConfiguration("max_range"),
-                        "min_range": LaunchConfiguration("min_range"),
-                        "deskew": LaunchConfiguration("deskew"),
-                        #  "voxel_size": LaunchConfiguration("voxel_size"),
-                        "max_points_per_voxel": 20,
-                        "initial_threshold": 2.0,
-                        "min_motion_th": 0.1,
-                    }
-                ],
-            ),
+            # Node(
+            #     package="kiss_icp",
+            #     executable="odometry_node",
+            #     name="odometry_node",
+            #     output="screen",
+            #     remappings=[("pointcloud_topic", LaunchConfiguration("topic"))],
+            #     parameters=[
+            #         {
+            #             "odom_frame": LaunchConfiguration("odom_frame"),
+            #             "child_frame": LaunchConfiguration("child_frame"),
+            #             "max_range": LaunchConfiguration("max_range"),
+            #             "min_range": LaunchConfiguration("min_range"),
+            #             "deskew": LaunchConfiguration("deskew"),
+            #             #  "voxel_size": LaunchConfiguration("voxel_size"),
+            #             "max_points_per_voxel": 20,
+            #             "initial_threshold": 2.0,
+            #             "min_motion_th": 0.1,
+            #         }
+            #     ],
+            # ),
             Node(
                 package="rviz2",
                 executable="rviz2",
